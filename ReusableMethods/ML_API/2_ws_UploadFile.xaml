@@ -1,0 +1,334 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="UploadFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strUploadEndpoint" Type="InArgument(x:String)" />
+    <x:Property Name="in_strAuthToken" Type="InArgument(x:String)" />
+    <x:Property Name="in_strUploadFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="out_strFileID" Type="OutArgument(x:String)" />
+    <x:Property Name="in_intTimeoutms" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>965,1603</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>UploadFile_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="46">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="UploadFile" sap:VirtualizedContainerService.HintSize="1207,2427" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="intStatus" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="diccHeaders" />
+      <Variable x:TypeArguments="x:String" Name="strContent" />
+      <Variable x:TypeArguments="x:Int32" Name="retryCount" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Subiendo documento &quot;+New FileInfo(in_strUploadFilePath).Name]" />
+    <Delay VisualBasic.Settings="{x:Null}" DisplayName="Delay 3 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="550,123" sap2010:WorkflowViewState.IdRef="Delay_1">
+      <TextExpression.Namespaces>
+        <sco:Collection x:TypeArguments="x:String">
+          <x:String>System.Activities</x:String>
+          <x:String>System.Activities.Statements</x:String>
+          <x:String>System.Activities.Expressions</x:String>
+          <x:String>System.Activities.Validation</x:String>
+          <x:String>System.Activities.XamlIntegration</x:String>
+          <x:String>Microsoft.VisualBasic.Activities</x:String>
+          <x:String>System</x:String>
+          <x:String>System.Collections.Generic</x:String>
+          <x:String>System.Data</x:String>
+          <x:String>System.Diagnostics</x:String>
+          <x:String>System.IO</x:String>
+          <x:String>System.Linq</x:String>
+          <x:String>System.Management.Automation</x:String>
+          <x:String>System.Net.Mail</x:String>
+          <x:String>System.Xml</x:String>
+          <x:String>System.Xml.Linq</x:String>
+          <x:String>UiPath.Library</x:String>
+          <x:String>System.Windows.Markup</x:String>
+        </sco:Collection>
+      </TextExpression.Namespaces>
+      <TextExpression.References>
+        <sco:Collection x:TypeArguments="AssemblyReference">
+          <AssemblyReference>System.Activities</AssemblyReference>
+          <AssemblyReference>mscorlib</AssemblyReference>
+          <AssemblyReference>System.Data</AssemblyReference>
+          <AssemblyReference>System</AssemblyReference>
+          <AssemblyReference>System.Core</AssemblyReference>
+          <AssemblyReference>System.Management.Automation</AssemblyReference>
+          <AssemblyReference>System.Xml</AssemblyReference>
+          <AssemblyReference>System.Xml.Linq</AssemblyReference>
+          <AssemblyReference>UiPath.Library</AssemblyReference>
+          <AssemblyReference>PresentationFramework</AssemblyReference>
+          <AssemblyReference>WindowsBase</AssemblyReference>
+          <AssemblyReference>PresentationCore</AssemblyReference>
+          <AssemblyReference>System.Xaml</AssemblyReference>
+        </sco:Collection>
+      </TextExpression.References>
+      <sap2010:WorkflowViewState.ViewStateManager>
+        <sap2010:ViewStateManager>
+          <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+        </sap2010:ViewStateManager>
+      </sap2010:WorkflowViewState.ViewStateManager>
+    </Delay>
+    <Assign sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[retryCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[strContent.Contains(&quot;None or Error&quot;) and retryCount &lt;=3]" DisplayName="Ciclo 3 trys conectar a API" sap:VirtualizedContainerService.HintSize="550,738" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480,579" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[retryCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[retryCount+1]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <TryCatch DisplayName="Conectar al API" sap:VirtualizedContainerService.HintSize="438,296" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[String.Empty]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_strUploadEndpoint]" sap:VirtualizedContainerService.HintSize="204,69" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_strAuthToken]" ResponseHeaders="[diccHeaders]" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="[in_intTimeoutms]">
+                <ui:HttpClient.Attachments>
+                  <InArgument x:TypeArguments="x:String" x:Key="Attachment">[in_strUploadFilePath]</InArgument>
+                </ui:HttpClient.Attachments>
+                <ui:HttpClient.Cookies>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Cookies>
+                <ui:HttpClient.Headers>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Headers>
+                <ui:HttpClient.Parameters>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Parameters>
+                <ui:HttpClient.UrlSegments>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.UrlSegments>
+              </ui:HttpClient>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[strContent]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">None or Error</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <If Condition="[strContent.Contains(&quot;None or Error&quot;)]" DisplayName="hay nones?" sap:VirtualizedContainerService.HintSize="438,51" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Delay VisualBasic.Settings="{x:Null}" DisplayName="Delay 3 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_2">
+                <TextExpression.Namespaces>
+                  <sco:Collection x:TypeArguments="x:String">
+                    <x:String>System.Activities</x:String>
+                    <x:String>System.Activities.Statements</x:String>
+                    <x:String>System.Activities.Expressions</x:String>
+                    <x:String>System.Activities.Validation</x:String>
+                    <x:String>System.Activities.XamlIntegration</x:String>
+                    <x:String>Microsoft.VisualBasic.Activities</x:String>
+                    <x:String>System</x:String>
+                    <x:String>System.Collections.Generic</x:String>
+                    <x:String>System.Data</x:String>
+                    <x:String>System.Diagnostics</x:String>
+                    <x:String>System.IO</x:String>
+                    <x:String>System.Linq</x:String>
+                    <x:String>System.Management.Automation</x:String>
+                    <x:String>System.Net.Mail</x:String>
+                    <x:String>System.Xml</x:String>
+                    <x:String>System.Xml.Linq</x:String>
+                    <x:String>UiPath.Library</x:String>
+                    <x:String>System.Windows.Markup</x:String>
+                  </sco:Collection>
+                </TextExpression.Namespaces>
+                <TextExpression.References>
+                  <sco:Collection x:TypeArguments="AssemblyReference">
+                    <AssemblyReference>System.Activities</AssemblyReference>
+                    <AssemblyReference>mscorlib</AssemblyReference>
+                    <AssemblyReference>System.Data</AssemblyReference>
+                    <AssemblyReference>System</AssemblyReference>
+                    <AssemblyReference>System.Core</AssemblyReference>
+                    <AssemblyReference>System.Management.Automation</AssemblyReference>
+                    <AssemblyReference>System.Xml</AssemblyReference>
+                    <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                    <AssemblyReference>UiPath.Library</AssemblyReference>
+                    <AssemblyReference>PresentationFramework</AssemblyReference>
+                    <AssemblyReference>WindowsBase</AssemblyReference>
+                    <AssemblyReference>PresentationCore</AssemblyReference>
+                    <AssemblyReference>System.Xaml</AssemblyReference>
+                  </sco:Collection>
+                </TextExpression.References>
+                <sap2010:WorkflowViewState.ViewStateManager>
+                  <sap2010:ViewStateManager>
+                    <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                  </sap2010:ViewStateManager>
+                </sap2010:WorkflowViewState.ViewStateManager>
+              </Delay>
+            </If.Then>
+          </If>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[intStatus]" sap:VirtualizedContainerService.HintSize="550,1102" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch.Default>
+        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="548,637" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Error subiendo archivo. Status: &quot;+intStatus.ToString+vbCrLf+strContent]" />
+          <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:String)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="486,329" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[diccHeaders]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:String)">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:String)" Name="currentItem" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[currentItem.key+&quot;: &quot;+currentItem.value]" />
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
+          <Throw Exception="[New Exception(&quot;Error al subir un archivo a la plataforma&quot;)]" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </Switch.Default>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence x:Key="200" DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,248" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Object" Name="jObjResponse" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:DeserializeJson x:TypeArguments="x:Object" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[jObjResponse]" JsonString="[strContent]" />
+        <Assign DisplayName="Assign FileId" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_strFileID]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[JObject.Parse(jObjResponse.ToString)("files").First("path").ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+    </Switch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="516,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Archivo subido con exito: &quot;+out_strFileID]" />
+  </Sequence>
+</Activity>

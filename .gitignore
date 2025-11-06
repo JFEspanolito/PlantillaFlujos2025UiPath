@@ -1,0 +1,6 @@
+# Ignorar todo lo oculto (.*)
+.*
+
+# Excepciones
+!.gitignore
+!.screenshots/

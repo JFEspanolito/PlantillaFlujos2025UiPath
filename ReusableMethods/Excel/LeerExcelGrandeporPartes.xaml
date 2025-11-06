@@ -1,0 +1,282 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="LeerExcelGrandeporPartes" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bem="clr-namespace:BalaReva.EasyExcel.Main;assembly=BalaReva.EasyExcel" xmlns:bes="clr-namespace:BalaReva.EasyExcel.Sheets;assembly=BalaReva.EasyExcel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_RutaArchivo" Type="InArgument(x:String)" />
+    <x:Property Name="in_Hoja" Type="InArgument(x:String)" />
+    <x:Property Name="in_ColumnaInicio" Type="InArgument(x:String)" />
+    <x:Property Name="in_FilaInicio" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_dtDatos" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1137,2094</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>BalaReva.EasyExcel.Main</x:String>
+      <x:String>BalaReva.EasyExcel.Utilities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>BalaReva.EasyExcel.Base</x:String>
+      <x:String>BalaReva.EasyExcel.Sheets</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="84">
+      <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel.Utilities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="LeerExcel Grande por Partes" sap:VirtualizedContainerService.HintSize="602,1929" sap2010:WorkflowViewState.IdRef="Sequence_90">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="filaUnCuarto" />
+      <Variable x:TypeArguments="x:Int32" Name="lastRow" />
+      <Variable x:TypeArguments="x:String" Name="colFinal" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <bem:ExcelScope FilePassword="{x:Null}" ModifyPassword="{x:Null}" DisplayAlerts="False" DisplayName="Encontrar ultima Fila" FilePath="[in_RutaArchivo]" sap:VirtualizedContainerService.HintSize="560,51" sap2010:WorkflowViewState.IdRef="ExcelScope_1" MacroSettings="None" UpdateAutoLinks="Default" Visible="False">
+      <bem:ExcelScope.Body>
+        <ActivityAction x:TypeArguments="bem:ExcelParam">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="bem:ExcelParam" Name="WorkBookObj" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="last row and column" sap:VirtualizedContainerService.HintSize="242,176" sap2010:WorkflowViewState.IdRef="Sequence_91">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="colindex" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <bes:FindLastRow ExecutionResult="{x:Null}" ContinueOnError="False" Delay="1" DisplayName="Find LastRow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="FindLastRow_1" RowIndex="[lastRow]" SheetName="[in_Hoja]" />
+            <bes:FindLastColumn ExecutionResult="{x:Null}" ColumnIndex="[colindex]" ColumnName="[colFinal]" ContinueOnError="False" Delay="1" DisplayName="Find LastColumn" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="FindLastColumn_1" SheetName="[in_Hoja]" />
+          </Sequence>
+        </ActivityAction>
+      </bem:ExcelScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </bem:ExcelScope>
+    <Assign DisplayName="Dividir entre 4" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_46">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[filaUnCuarto]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(lastRow/4)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Leer documento por partes (4 partes)" sap:VirtualizedContainerService.HintSize="560,1646" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_RutaArchivo]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1537" sap2010:WorkflowViewState.IdRef="Sequence_86">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="dtmp2" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dtmp3" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dtmp4" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtDatos]" DisplayName="Read Range - 0 a p1" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="[in_ColumnaInicio+in_FilaInicio.ToString+&quot;:&quot;+colFinal+filaUnCuarto.ToString]" SheetName="[in_Hoja]" />
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[dtmp2]" DisplayName="Read Range - p1 a p2" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="[in_ColumnaInicio+(filaUnCuarto+1).ToString+&quot;:&quot; +colFinal+(filaUnCuarto*2).ToString]" SheetName="[in_Hoja]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExcelReadRange>
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[dtmp3]" DisplayName="Read Range - p2 a p3" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" Range="[in_ColumnaInicio+((filaUnCuarto*2)+1).ToString+&quot;:&quot;+colFinal+((filaUnCuarto*2)+filaUnCuarto).ToString]" SheetName="[in_Hoja]" />
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[dtmp4]" DisplayName="Read Range - p4 a final" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="[in_ColumnaInicio+((filaUnCuarto*2)+filaUnCuarto+1).ToString+&quot;:&quot;+colFinal+((filaUnCuarto*2)+(filaUnCuarto*2)).ToString]" SheetName="[in_Hoja]" />
+            <ui:MergeDataTable Destination="[out_dtDatos]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dtmp2]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MergeDataTable>
+            <ui:MergeDataTable Destination="[out_dtDatos]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtmp3]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MergeDataTable>
+            <ui:MergeDataTable Destination="[out_dtDatos]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="MergeDataTable_3" MissingSchemaAction="Add" Source="[dtmp4]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MergeDataTable>
+            <If Condition="[out_dtDatos.Columns.Contains(&quot;Column0&quot;)]" DisplayName="Existe columna basura" sap:VirtualizedContainerService.HintSize="484,776" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Eliminar" sap:VirtualizedContainerService.HintSize="382,600" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Int32" Name="cont" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="340,60" sap2010:WorkflowViewState.IdRef="Assign_49">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[cont]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="True" DisplayName="Ciclo Eliminación" sap:VirtualizedContainerService.HintSize="340,408" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                    <ui:InterruptibleDoWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,243" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch DisplayName="Eliminar" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch.Try>
+                            <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="[&quot;Column&quot;+cont.ToString]" DataTable="[out_dtDatos]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:RemoveDataColumn>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <ui:Break sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_50">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[cont]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[cont+1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:InterruptibleDoWhile.Body>
+                  </ui:InterruptibleDoWhile>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+  </Sequence>
+</Activity>

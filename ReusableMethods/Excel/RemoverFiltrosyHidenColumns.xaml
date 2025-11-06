@@ -1,0 +1,241 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="RemoverFiltrosyHidenColumns" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bees="clr-namespace:BalaReva.EasyExcel.External.Sheets;assembly=BalaReva.EasyExcel" xmlns:beh="clr-namespace:BalaReva.Excel.Hide_UnHide;assembly=BalaReva.Excel" xmlns:bem="clr-namespace:BalaReva.EasyExcel.Main;assembly=BalaReva.EasyExcel" xmlns:bes="clr-namespace:BalaReva.EasyExcel.Sheets;assembly=BalaReva.EasyExcel" xmlns:bes1="clr-namespace:BalaReva.Excel.Sheets;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="RutaExcelMainConciliaciones" Type="InArgument(x:String)" />
+    <x:Property Name="HojaExcelTrabajar" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1133,945</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>BalaReva.EasyExcel.Main</x:String>
+      <x:String>BalaReva.EasyExcel.Utilities</x:String>
+      <x:String>BalaReva.Excel.Hide_UnHide</x:String>
+      <x:String>BalaReva.EasyExcel.Base</x:String>
+      <x:String>BalaReva.EasyExcel.External.Sheets</x:String>
+      <x:String>BalaReva.Excel.Base</x:String>
+      <x:String>BalaReva.EasyExcel.Sheets</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>BalaReva.Excel.Sheets</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+      <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel.Utilities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Remover Filtros y Hiden Columns" sap:VirtualizedContainerService.HintSize="376,780" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(x:Int32)" Name="FilasOcultasEncontradas" />
+      <Variable x:TypeArguments="x:Int32" Name="lastRow" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <bem:ExcelScope FilePassword="{x:Null}" ModifyPassword="{x:Null}" DisplayAlerts="False" DisplayName="Excel Scope" FilePath="[RutaExcelMainConciliaciones]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="ExcelScope_1" MacroSettings="None" UpdateAutoLinks="Default" Visible="False">
+      <bem:ExcelScope.Body>
+        <ActivityAction x:TypeArguments="bem:ExcelParam">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="bem:ExcelParam" Name="WorkBookObj" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,307" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Removiendo Filtros del Documento.&quot;]" />
+            <bes:RemoveFilter ExecutionResult="{x:Null}" ContinueOnError="True" Delay="2" DisplayName="Remove Filter" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveFilter_1" SheetName="[HojaExcelTrabajar]" TableIndex="-1" />
+            <bes:FindLastRow ExecutionResult="{x:Null}" ContinueOnError="False" Delay="1" DisplayName="Find LastRow" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="FindLastRow_1" RowIndex="[lastRow]" SheetName="[HojaExcelTrabajar]" />
+          </Sequence>
+        </ActivityAction>
+      </bem:ExcelScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </bem:ExcelScope>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Obteniendo filas vacías&quot;]" />
+    <bes1:AutoFitRows ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" RowHeight="{x:Null}" AutoFit="True" ContinueOnError="True" Delay="3" DisplayName="AutoFit Rows" FilePath="[RutaExcelMainConciliaciones]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="AutoFitRows_1" RowsRange="[Enumerable.Range(1, lastRow).ToArray()]" SheetName="[HojaExcelTrabajar]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </bes1:AutoFitRows>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Obteniendo filas vacías&quot;]" />
+    <bees:GetHiddenRows ContinueOnError="True" Delay="1" DisplayName="Get Hidden Rows" FilePath="[RutaExcelMainConciliaciones]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetHiddenRows_1" Result="[FilasOcultasEncontradas]" SheetName="[HojaExcelTrabajar]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Filas vacías detectadas: &quot; + FilasOcultasEncontradas.Count.ToString]" />
+    <If Condition="[FilasOcultasEncontradas.Count&gt;0]" DisplayName="Hay filas ocultas?" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <If Condition="[FilasOcultasEncontradas.Count&lt;=10]" DisplayName="Hay filas ocultas?" sap:VirtualizedContainerService.HintSize="484,224" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <beh:RowHide ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="True" Delay="1" DisplayName="Show Hidden Rows" FilePath="[RutaExcelMainConciliaciones]" HiddenType="Unhide" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="RowHide_1" RowNumbers="[FilasOcultasEncontradas.ToArray]" SheetName="[HojaExcelTrabajar]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </beh:RowHide>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Mostrar de 10 en 10" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="segmentSize" />
+                <Variable x:TypeArguments="x:Double" Name="totalSegments" />
+                <Variable x:TypeArguments="x:Int32" Name="Posicion" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[segmentSize]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">10</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[totalSegments]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double">[Math.Ceiling(FilasOcultasEncontradas.Count / segmentSize)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[Posicion]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Mostrando filas ocultas dividido en &quot; + totalSegments.ToString +&quot; ciclos de 10 en 10.&quot;]" />
+              <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="Ciclar unhide 10 en 10" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                <ui:InterruptibleWhile.Body>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="487,492" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="s:Int32[]" Name="segment" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="445,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Ejecutando Ciclo &quot; + (Posicion+1).ToString]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="445,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Int32[]">[segment]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Int32[]">[FilasOcultasEncontradas.Skip(Posicion * segmentSize).Take(segmentSize).ToArray()]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="445,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[Posicion]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[Posicion+1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <beh:RowHide ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="True" Delay="1" DisplayName="Show Hidden Rows" FilePath="[RutaExcelMainConciliaciones]" HiddenType="Unhide" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="RowHide_2" RowNumbers="[segment]" SheetName="[HojaExcelTrabajar]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </beh:RowHide>
+                  </Sequence>
+                </ui:InterruptibleWhile.Body>
+                <ui:InterruptibleWhile.Condition>
+                  <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Posicion &lt; totalSegments" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                </ui:InterruptibleWhile.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InterruptibleWhile>
+            </Sequence>
+          </If.Else>
+        </If>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>

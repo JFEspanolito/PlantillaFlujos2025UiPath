@@ -1,0 +1,70 @@
+{
+  "name": "Plantilla2025",
+  "projectId": "acc6f046-0b86-452f-b207-590c0dbabb5d",
+  "description": "",
+  "main": "Main.xaml",
+  "dependencies": {
+    "BalaReva.EasyExcel.Activities": "[32.0.0]",
+    "BalaReva.Excel.Activities": "[2021.1.0]",
+    "DesktopVideoRecorder.Activities": "[2.0.2]",
+    "UiPath.Database.Activities": "[1.9.0]",
+    "UiPath.Excel.Activities": "[3.2.1]",
+    "UiPath.Mail.Activities": "[2.4.10]",
+    "UiPath.MicrosoftOffice365.Activities": "[3.4.12]",
+    "UiPath.OpenAI.IntegrationService.Activities": "[6.1.2]",
+    "UiPath.PDF.Activities": "[3.25.0]",
+    "UiPath.System.Activities": "[25.10.3]",
+    "UiPath.Testing.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.19]",
+    "UiPath.WebAPI.Activities": "[2.3.2]",
+    "UiPath.Word.Activities": "[2.2.0]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "24.10.14.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "a463596a-da51-47f6-8366-4a27efe0d26c",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}
