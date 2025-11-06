@@ -8,7 +8,7 @@ pipeline {
                     // Cambia el nombre del subdirectorio a sonar-scanner
                     dir('sonar-scanner') {
                         // Clonar el repositorio externo dentro del subdirectorio sonar-scanner
-                        git 'git url'
+                        git 'https://github.com/JFEspanolito/PlantillaFlujos2025UiPath.git'
                     }
                 }
             }
