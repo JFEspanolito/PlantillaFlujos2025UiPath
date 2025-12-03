@@ -1,6 +1,6 @@
 {
   "Name": "Plantilla2025",
   "ProjectType": "Process",
-  "Description": "",
+  "Description": "Este proyecto es una plantilla estándar para el desarrollo de automatizaciones RPA con UiPath. Su propósito es ofrecer una base sólida y organizada para iniciar nuevos proyectos, manteniendo coherencia estructural, buenas prácticas y reducción de tiempos de configuración inicial.",
   "MainFile": "Main.xaml"
 }

@@ -3,7 +3,7 @@
     <x:Property Name="MensajeError" Type="OutArgument(x:String)" />
     <x:Property Name="SystemError" Type="OutArgument(s:Exception)" />
     <x:Property Name="BusinessException" Type="OutArgument(ui:BusinessRuleException)" />
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))">
+    <x:Property Name="dicConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
@@ -140,14 +140,14 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Init Apps" sap:VirtualizedContainerService.HintSize="1281,2053" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Init Apps" sap:VirtualizedContainerService.HintSize="1021,2204" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Control de Errores General" sap:VirtualizedContainerService.HintSize="486,2030" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Control de Errores General" sap:VirtualizedContainerService.HintSize="486,2181" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -155,20 +155,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Pasos a Realizar" sap:VirtualizedContainerService.HintSize="484,934" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Pasos a Realizar" sap:VirtualizedContainerService.HintSize="484,1053" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Logins" sap:VirtualizedContainerService.HintSize="450,639" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Logins" sap:VirtualizedContainerService.HintSize="450,742" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="ui:Browser">[BrowserWebApp]</OutArgument>
               </Assign.To>
@@ -178,11 +178,11 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <If Condition="[Boolean.Parse(in_Config(&quot;AutenticarWebApp&quot;).ToString)]" DisplayName="Acceso WebApp?" sap:VirtualizedContainerService.HintSize="416,490" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[Boolean.Parse(dicConfig(&quot;AutenticarWebApp&quot;).ToString)]" DisplayName="Acceso WebApp?" sap:VirtualizedContainerService.HintSize="416,467" sap2010:WorkflowViewState.IdRef="If_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -190,16 +190,16 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Login WebApp workflow" sap:VirtualizedContainerService.HintSize="334,173" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="BusinessProccess\Browser\AppWeb\Logins\LoginApp.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Login WebApp workflow" sap:VirtualizedContainerService.HintSize="334,150" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="BusinessProccess\Browser\AppWeb\Login\LoginApp.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="appName">WebApp</InArgument>
                     <InArgument x:TypeArguments="x:Int32" x:Key="control_maxretry">[maxRetry]</InArgument>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="in_ReintentosAdmitidos">[maxRetry]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="dicConfig">[dicConfig]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="ReintentosAdmitidos">[maxRetry]</InArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="MensajeError">[MensajeError]</OutArgument>
                     <OutArgument x:TypeArguments="s:Exception" x:Key="SystemError">[SystemError]</OutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_URL">[in_Config("UrlWebApp").ToString]</InArgument>
-                    <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_Browser">[BrowserWebApp]</InOutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="Url">[dicConfig("UrlWebApp").ToString]</InArgument>
+                    <InOutArgument x:TypeArguments="ui:Browser" x:Key="Browser">[BrowserWebApp]</InOutArgument>
                     <InArgument x:TypeArguments="x:Int32" x:Key="control_timeout">[control_timeout]</InArgument>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="dicRutas">[dicRutas]</InArgument>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(x:String, ss:SecureString))" x:Key="dicCredenciales">[dicCredenciales]</InArgument>
@@ -212,14 +212,14 @@
               </If.Else>
             </If>
           </Sequence>
-          <Sequence DisplayName="Navegaciones" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Navegaciones" sap:VirtualizedContainerService.HintSize="450,126" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Sequence>
-          <Sequence DisplayName="Buscar Insumos" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Buscar Insumos" sap:VirtualizedContainerService.HintSize="450,121" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -240,14 +240,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="484,401" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="484,413" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign sap:VirtualizedContainerService.HintSize="450,179" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
                 </Assign.To>
@@ -255,7 +255,7 @@
                   <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign sap:VirtualizedContainerService.HintSize="450,170" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[MensajeError]</OutArgument>
                 </Assign.To>
@@ -277,14 +277,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="BE" sap:VirtualizedContainerService.HintSize="484,401" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="BE" sap:VirtualizedContainerService.HintSize="484,413" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign sap:VirtualizedContainerService.HintSize="450,179" sap2010:WorkflowViewState.IdRef="Assign_3">
                 <Assign.To>
                   <OutArgument x:TypeArguments="ui:BusinessRuleException">[BusinessException]</OutArgument>
                 </Assign.To>
@@ -292,7 +292,7 @@
                   <InArgument x:TypeArguments="ui:BusinessRuleException">[exception]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign sap:VirtualizedContainerService.HintSize="450,170" sap2010:WorkflowViewState.IdRef="Assign_4">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[MensajeError]</OutArgument>
                 </Assign.To>
